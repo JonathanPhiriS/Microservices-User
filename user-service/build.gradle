@@ -1,0 +1,37 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.3.4'
+    id 'io.spring.dependency-management' version '1.1.6'
+}
+
+group = 'com.clinicalnursing'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '17'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // Spring Boot dependencies
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'org.springframework.boot:spring-boot-starter-mail'
+    implementation 'jakarta.validation:jakarta.validation-api:3.0.2'
+
+    // Database connector
+    runtimeOnly 'mysql:mysql-connector-java:8.0.29'
+
+    // Testing dependencies
+    testImplementation 'org.springframework.boot:spring-boot-starter-test' // Includes JUnit 5, Spring Boot Test, MockMvc
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.10.0' // JUnit 5 API
+    testImplementation 'org.junit.jupiter:junit-jupiter-engine:5.10.0' // JUnit 5 Engine
+    testImplementation 'org.hamcrest:hamcrest:2.2' // Hamcrest matchers
+    testImplementation 'org.mockito:mockito-core:4.8.0' // Mockito for mocking
+    testImplementation 'org.springframework:spring-test' // Spring Test for MockMvc
+}
+
+tasks.named('test') {
+    useJUnitPlatform() // Ensure that JUnit 5 is used
+}
